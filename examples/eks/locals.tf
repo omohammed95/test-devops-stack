@@ -1,10 +1,10 @@
 locals {
   kubernetes_version       = "1.29"
-  cluster_name             = "YOUR_CLUSTER_NAME" # Must be unique for each DevOps Stack deployment in a single AWS account. Contains only alphanumeric and hyphens.
-  base_domain              = "your.domain.here"  # Must match a Route 53 zone in the AWS account where you are deploying the DevOps Stack.
+  cluster_name             = "os-test-eks" # Must be unique for each DevOps Stack deployment in a single AWS account. Contains only alphanumeric and hyphens.
+  base_domain              = "is-sandbox.camptocamp.com"  # Must match a Route 53 zone in the AWS account where you are deploying the DevOps Stack.
   subdomain                = "apps"
   cluster_issuer           = module.cert-manager.cluster_issuers.staging
-  letsencrypt_issuer_email = "YOUR_EMAIL_ADDRESS"
+  letsencrypt_issuer_email = "letsencrypt@camptocamp.com"
   enable_service_monitor   = false # Can be enabled after the first bootstrap.
   app_autosync             = true ? { allow_empty = false, prune = true, self_heal = true } : {}
 

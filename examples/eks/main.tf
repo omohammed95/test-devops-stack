@@ -66,10 +66,10 @@ module "oidc" {
 
   user_map = {
     YOUR_USERNAME = {
-      username   = "YOUR_USERNAME"
-      email      = "YOUR_EMAIL"
-      first_name = "YOUR_FIRST_NAME"
-      last_name  = "YOUR_LAST_NAME"
+      username   = "omohammed"
+      email      = "osman.mohammed@camptocamp.com"
+      first_name = "Osman"
+      last_name  = "Mohammed"
     }
   }
 }

@@ -4,7 +4,7 @@ module "sks" {
   cluster_name       = local.cluster_name
   kubernetes_version = local.kubernetes_version
   zone               = local.zone
-  base_domain        = resource.exoscale_domain.domain.name
+  base_domain        = data.exoscale_domain.domain.name
   subdomain          = local.subdomain
 
   service_level = local.service_level
@@ -93,10 +93,10 @@ module "oidc" {
 
   user_map = {
     YOUR_USERNAME = {
-      username   = "YOUR_USERNAME"
-      email      = "YOUR_EMAIL"
-      first_name = "YOUR_FIRST_NAME"
-      last_name  = "YOUR_LAST_NAME"
+      username   = "omohammed"
+      email      = "osman.mohammed@camptocamp.com"
+      first_name = "Osman"
+      last_name  = "Mohammed"
     },
   }
 
@@ -126,8 +126,8 @@ module "longhorn" {
     bucket_name = resource.aws_s3_bucket.this["longhorn"].id
     region      = resource.aws_s3_bucket.this["longhorn"].region
     endpoint    = "sos-${resource.aws_s3_bucket.this["longhorn"].region}.exo.io"
-    access_key  = resource.exoscale_iam_access_key.s3_iam_key["longhorn"].key
-    secret_key  = resource.exoscale_iam_access_key.s3_iam_key["longhorn"].secret
+    access_key  = resource.exoscale_iam_api_key.s3_iam_key["longhorn"].key
+    secret_key  = resource.exoscale_iam_api_key.s3_iam_key["longhorn"].secret
   }
 
   dependency_ids = {
@@ -151,8 +151,8 @@ module "loki-stack" {
   logs_storage = {
     bucket_name = resource.aws_s3_bucket.this["loki"].id
     region      = resource.aws_s3_bucket.this["loki"].region
-    access_key  = resource.exoscale_iam_access_key.s3_iam_key["loki"].key
-    secret_key  = resource.exoscale_iam_access_key.s3_iam_key["loki"].secret
+    access_key  = resource.exoscale_iam_api_key.s3_iam_key["loki"].key
+    secret_key  = resource.exoscale_iam_api_key.s3_iam_key["loki"].secret
   }
 
   dependency_ids = {
@@ -177,8 +177,8 @@ module "thanos" {
   metrics_storage = {
     bucket_name = resource.aws_s3_bucket.this["thanos"].id
     region      = resource.aws_s3_bucket.this["thanos"].region
-    access_key  = resource.exoscale_iam_access_key.s3_iam_key["thanos"].key
-    secret_key  = resource.exoscale_iam_access_key.s3_iam_key["thanos"].secret
+    access_key  = resource.exoscale_iam_api_key.s3_iam_key["thanos"].key
+    secret_key  = resource.exoscale_iam_api_key.s3_iam_key["thanos"].secret
   }
 
   thanos = {
@@ -209,8 +209,8 @@ module "kube-prometheus-stack" {
   metrics_storage = {
     bucket_name = resource.aws_s3_bucket.this["thanos"].id
     region      = resource.aws_s3_bucket.this["thanos"].region
-    access_key  = resource.exoscale_iam_access_key.s3_iam_key["thanos"].key
-    secret_key  = resource.exoscale_iam_access_key.s3_iam_key["thanos"].secret
+    access_key  = resource.exoscale_iam_api_key.s3_iam_key["thanos"].key
+    secret_key  = resource.exoscale_iam_api_key.s3_iam_key["thanos"].secret
   }
 
   prometheus = {

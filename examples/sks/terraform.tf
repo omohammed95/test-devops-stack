@@ -3,10 +3,10 @@ terraform {
   # as far as I know. See https://github.com/exoscale/terraform-provider-exoscale/tree/master/examples/sos-backend
   backend "s3" {
     encrypt        = true
-    bucket         = "<BUCKET_NAME>"
-    key            = "<NAME_OF_THE_STATE_FILE>"
+    bucket         = "camptocamp-aws-is-sandbox-terraform-state"
+    key            = "393e27cc-b420-4462-b8a1-5544b3d5ddcd"
     region         = "eu-west-1"
-    dynamodb_table = "<DYANMODB_TABLE_NAME>"
+    dynamodb_table = "camptocamp-aws-is-sandbox-terraform-statelock"
   }
 
   required_providers {

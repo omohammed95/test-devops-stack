@@ -1,13 +1,13 @@
 locals {
-  kubernetes_version       = "1.29.2"
-  cluster_name             = "YOUR_CLUSTER_NAME" # Must be unique for each DevOps Stack deployment in a single account.
-  zone                     = "YOUR_CLUSTER_ZONE"
+  kubernetes_version       = "1.29.5"
+  cluster_name             = "om-sks-cluster" # Must be unique for each DevOps Stack deployment in a single account.
+  zone                     = "ch-gva-2"
   service_level            = "starter"
-  base_domain              = "your.domain.here"
+  base_domain              = "is-sandbox-exo.camptocamp.com"
   subdomain                = "apps"
   activate_wildcard_record = true
   cluster_issuer           = module.cert-manager.cluster_issuers.staging
-  letsencrypt_issuer_email = "YOUR_EMAIL_ADDRESS"
+  letsencrypt_issuer_email = "letsencrypt@camptocamp.com"
   enable_service_monitor   = false # Can be enabled after the first bootstrap.
   app_autosync             = true ? { allow_empty = false, prune = true, self_heal = true } : {}
 }

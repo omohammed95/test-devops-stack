@@ -12,7 +12,7 @@ module "metallb" {
 }
 
 module "argocd_bootstrap" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git//bootstrap?ref=v4.5.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git//bootstrap?ref=v5.2.0"
 
   argocd_projects = {
     "${local.cluster_name}" = {
@@ -51,7 +51,7 @@ module "traefik" {
 }
 
 module "cert-manager" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-cert-manager.git//self-signed?ref=v8.2.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-cert-manager.git//self-signed?ref=v8.3.0"
 
   argocd_project = local.cluster_name
 
@@ -177,7 +177,7 @@ module "thanos" {
 }
 
 module "kube-prometheus-stack" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-kube-prometheus-stack.git//kind?ref=v11.1.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-kube-prometheus-stack.git//kind?ref=v11.1.1"
 
   cluster_name   = local.cluster_name
   base_domain    = local.base_domain
@@ -213,7 +213,7 @@ module "kube-prometheus-stack" {
 }
 
 module "argocd" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git?ref=v4.5.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git?ref=v5.2.0"
 
   base_domain              = local.base_domain
   cluster_name             = local.cluster_name

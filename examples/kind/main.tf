@@ -6,13 +6,13 @@ module "kind" {
 }
 
 module "metallb" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-metallb.git?ref=v1.3.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-metallb.git?ref=v1.4.0"
 
   subnet = module.kind.kind_subnet
 }
 
 module "argocd_bootstrap" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git//bootstrap?ref=v5.2.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git//bootstrap?ref=v5.3.0"
 
   argocd_projects = {
     "${local.cluster_name}" = {
@@ -38,7 +38,7 @@ module "metrics-server" {
 }
 
 module "traefik" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-traefik.git//kind?ref=v6.3.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-traefik.git//kind?ref=v7.0.0"
 
   argocd_project = local.cluster_name
 
@@ -51,7 +51,7 @@ module "traefik" {
 }
 
 module "cert-manager" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-cert-manager.git//self-signed?ref=v8.3.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-cert-manager.git//self-signed?ref=v8.4.0"
 
   argocd_project = local.cluster_name
 
@@ -103,7 +103,7 @@ module "oidc" {
 }
 
 module "minio" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-minio.git?ref=v3.1.1"
+  source = "git::https://github.com/camptocamp/devops-stack-module-minio.git?ref=v3.2.0"
 
   cluster_name   = local.cluster_name
   base_domain    = local.base_domain
@@ -213,7 +213,7 @@ module "kube-prometheus-stack" {
 }
 
 module "argocd" {
-  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git?ref=v5.2.0"
+  source = "git::https://github.com/camptocamp/devops-stack-module-argocd.git?ref=v5.3.0"
 
   base_domain              = local.base_domain
   cluster_name             = local.cluster_name
